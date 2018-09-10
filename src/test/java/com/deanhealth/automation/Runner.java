@@ -1,4 +1,4 @@
-package com.deanhealth.test;
+package com.deanhealth.automation;
 
 import org.junit.runner.RunWith;
 import cucumber.api.junit.Cucumber;

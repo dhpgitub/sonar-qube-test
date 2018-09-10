@@ -10,8 +10,6 @@ public class ControllerTest {
     @Test
     public void helloWorldTest() {
         Controller controller = new Controller();
-
-        System.out.println("Jamie: Running tests");
         assertEquals("Hello World", controller.helloWorld());
     }
 }

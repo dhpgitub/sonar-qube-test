@@ -36,7 +36,7 @@ task cucumber() {
             //src/test/resources/features/Network/ReceivedFileNetworkURL.feature
             main = "cucumber.api.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ['--plugin', 'pretty', '--glue', 'com.deanhealth.test', 'src/test/resources/features/'+featureName]
+            args = ['--plugin', 'pretty', '--glue', 'com.deanhealth.automation', 'src/test/resources/features/'+featureName]
         }
     }
 }
@@ -47,7 +47,16 @@ task cucumberAll() {
             //src/test/resources/features/Network/ReceivedFileNetworkURL.feature
             main = "cucumber.api.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ['--plugin', 'pretty', '--glue', 'com.deanhealth.test', 'src/test/resources/features/']
+            args = ['--plugin', 'pretty', '--glue', 'com.deanhealth.automation', 'src/test/resources/features/']
         }
     }
+}
+test{
+    exclude '**/automation/**'
+}
+task unitTests(type: Test) {
+    exclude '**/automation/**'
+}
+task automatedTests(type: Test) {
+    include '**/automation/**'
 }
