@@ -1,0 +1,50 @@
+pipeline {
+    agent {
+        label 'worker'
+    }
+    tools {
+        gradle 'GRADLE_LATEST'
+    }
+    stages{
+       stage('Git Checkout'){
+           steps{
+               cleanWs()
+               git credentialsId: '65bc32a1-9a81-446c-b37b-c0ac940783da', url: 'https://github.com/dhpgitub/sonar-qube-test.git'
+           }
+       }
+       stage('Gradle Build'){
+           steps {
+               sh 'echo test'
+               sh 'gradle clean build'
+           }
+       }
+       stage('Deploy') {
+           steps{
+               script{
+                   withCredentials([usernamePassword(credentialsId: '412156c4-c11e-44e4-ac97-81515e62e2ea', passwordVariable: 'password', usernameVariable: 'user')]) {
+                       def remote = [:]
+                       remote.name = 'docker-vm'
+                       remote.host = '137.117.85.216'
+                       remote.user = user
+                       remote.password = password
+                       remote.allowAnyHosts = true
+                       sshCommand remote: remote, command: "ls -lrt"
+                       sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
+                   }
+               }
+               echo 'deploy'
+               
+           }
+       }
+       stage('Automated Testing'){
+           steps {
+               sh 'gradle automatedTests'
+           }
+       }
+       stage('Sonarqube Scan'){
+           steps {
+               echo 'sonarqube'
+           }
+       }
+    }
+}
