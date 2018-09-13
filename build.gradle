@@ -21,6 +21,8 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'idea'
 apply plugin: 'maven'
 apply plugin: "jacoco"
+apply plugin: 'org.owasp.dependencycheck'
+
 jacocoTestReport {
     group = "Reporting"
     reports {
@@ -32,7 +34,7 @@ jacocoTestReport {
 }
 
 
-group = 'com.dhp.automation'
+group = 'com.deanhealth.test'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
@@ -58,6 +60,17 @@ project.ext{
 
 }
 
+jacocoTestReport {
+    group = "Reporting"
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.destination "${buildDir}/reports/coverage"
+    }
+}
+dependencyCheck {
+    format='ALL'
+}
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
