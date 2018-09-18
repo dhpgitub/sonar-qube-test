@@ -21,6 +21,7 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'idea'
 apply plugin: 'maven'
 apply plugin: "jacoco"
+apply plugin: 'org.owasp.dependencycheck'
 jacocoTestReport {
     group = "Reporting"
     reports {
@@ -65,6 +66,10 @@ dependencies {
     testCompile 'info.cukes:cucumber-junit:' + cucumberVersion
     testCompile 'junit:junit:' + junitVersion
 
+}
+
+dependencyCheck {
+    format='ALL'
 }
 
 configurations {
