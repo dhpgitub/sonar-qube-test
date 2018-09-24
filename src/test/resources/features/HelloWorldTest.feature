@@ -21,10 +21,6 @@ Feature: Return Hello World Test
       |result|
       |Hello World|
 
-<<<<<<< HEAD
-  This is a test to create a merge conflict
-      
-=======
     @tag1
       Scenario Outline: This is dev 2 scenario
       Given dev2 is at office
@@ -34,4 +30,3 @@ Feature: Return Hello World Test
       Examples:
         |result|
         |Hello World|
->>>>>>> a204f8c16d6fe3781e55b870061f5e3df7184402
