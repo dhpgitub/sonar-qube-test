@@ -20,7 +20,7 @@ Feature: Return Hello World Test
     Examples:
       |result|
       |Hello World|
-  
+
    @tag1
     Scenario Outline: This is dev 2 scenario
     Given dev2 is at office
