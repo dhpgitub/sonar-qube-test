@@ -20,3 +20,8 @@ Feature: Return Hello World Test
     Examples:
       |result|
       |Hello World|
+
+This is a test to create a merge conflict
+This is a test to create a merge conflict
+This is a test to create a merge conflict
+This is a test to create a merge conflict
