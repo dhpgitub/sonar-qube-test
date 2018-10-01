@@ -23,6 +23,8 @@ apply plugin: 'idea'
 apply plugin: 'maven'
 apply plugin: "jacoco"
 apply plugin: 'org.owasp.dependencycheck'
+apply plugin:'base'
+
 jacocoTestReport {
     group = "Reporting"
     reports {
